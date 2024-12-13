@@ -1,16 +1,14 @@
 services:
   redis:
-    image: redis:7-alpine
-    restart: always
+    image: acrcryptgeonfc001.azurecr.io/redis:latest
     # Set a size limit. See link below on how to customise.
     # https://redis.io/docs/manual/eviction/
     # command: redis-server --maxmemory 1gb --maxmemory-policy allkeys-lru
 
   app:
-    image: acrcryptgeonfc001.azurecr.io/cryptgeon:latest
+    image: acrcryptgeonfc001.azurecr.io/mysecret:latest
     depends_on:
       - redis
-    restart: always
     environment:
       # Size limit for a single note.
       SIZE_LIMIT: 200 MiB
